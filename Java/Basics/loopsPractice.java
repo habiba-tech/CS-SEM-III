@@ -1,5 +1,5 @@
 import java.util.Scanner;
-/*public class loopsPractice {
+public class loopsPractice {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter Number for a Table : ");
@@ -8,11 +8,11 @@ import java.util.Scanner;
             System.out.println(n+"*"+i+"="+i*n);
         }
     }
-}*/
+}
 
 //while loop
 
-/* public class loopsPractice {
+ public class loopsPractice {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter Number for a Table : ");
@@ -23,7 +23,7 @@ import java.util.Scanner;
             i++;
         }
     }
-}*/
+}
 
 // Do while loop
 
@@ -40,4 +40,5 @@ public class loopsPractice {
 
     }
 }
+
 
