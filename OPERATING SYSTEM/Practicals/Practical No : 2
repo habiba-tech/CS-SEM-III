@@ -113,3 +113,70 @@ Produced: 57
 Consumed:57 
 Produced: 4 
 Consumed: 4 
+ ● Non Blocking Version of Producer-Consumer Using multiprocessing-Queue
+2: Non-Blocking 
+Input: import
+multiprocessing 
+import time 
+import random 
+import queue  # For handling Empty/Full exceptions 
+def producer(queue_obj, n_items):    
+  for i in range(n_items):     
+    item = random.randint(1, 100)
+    try:           
+     queue_obj.put(item,block=False)  # Non-blocking put         
+     print(f"Produced: {item}")        
+   except queue.Full:             
+    print("Queue is full. Skipping item.")    
+   time.sleep(random.uniform(0.1, 0.5))
+def consumer(queue_obj, n_items):   
+  consumed = 0    
+  while consumed < n_items:      
+  try:             
+    item = queue_obj.get(block=False)  # Non-blocking get         
+    print(f"Consumed: {item}")          
+    consumed += 1       
+  except queue.Empty:           
+    print("Queue is empty. Waiting...")         
+    time.sleep(random.uniform(0.1, 0.5)) 
+
+if __name__ == "__main__":   
+  N_ITEMS = 10    
+  q = multiprocessing.Queue(maxsize=5)   
+  p = multiprocessing.Process(target=producer, args=(q, N_ITEMS))    
+  c = multiprocessing.Process(target=consumer, args=(q, N_ITEMS)) 
+
+p.start()
+c.start()
+p.join() 
+c.join()
+
+Output:
+Produced:68
+Consumed:68 
+Queue is empty. Waiting... 
+Produced: 83 Consumed: 83
+Queue is empty. Waiting...
+Queue is empty. Waiting... 
+Produced: 62 
+Produced:77
+Consumed: 62 
+Consumed: 77
+Queue is empty. Waiting... 
+Produced: 70 
+Produced: 21 
+Consumed: 70 
+Consumed: 21 
+Queue is empty. Waiting...
+Produced: 29 
+Consumed: 29 
+Queue is empty. Waiting...
+Queue is empty. Waiting...
+Produced: 100 
+Consumed: 100
+Queue is empty. Waiting... 
+Produced: 41 
+Consumed: 41 
+Queue is empty. Waiting...
+Produced: 68
+Consumed: 68 
