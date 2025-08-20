@@ -1,0 +1,109 @@
+    Practical No : 2
+
+Aim: Construct a dynamic singly Linked List with basic operations
+Construct a dynamic singly Linked List with basic operations
+Apply Linked List to simulate scenarios such as managing a playlist or to-do list.
+Compare Static (Array) vs Dynamic (Linked) approaches
+
+Input:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Linked List class to manage tasks
+class TaskList:
+    def __init__(self):
+        self.head = None
+
+    def add_task(self,task):
+        # Add a new task to the end of the list
+        new_node = Node(task)
+        if not self.head:
+            self.head = new_node
+            return
+        curr= self.head
+        while curr.next:
+            curr = curr.next
+        curr.next = new_node
+
+    def remove_task(self,task):
+        # Remove the first occurrence of a task without using prev
+        if not self.head:
+            return False  #Remove head node
+        
+        if self.head.data == task:
+            self.head = self.head.next  #Remove head node
+            return True
+        
+        curr=self.head
+        while curr.next:
+            if curr.next.data == task:
+                curr.next = curr.next.next  #Bypass the node
+                return True
+            curr = curr.next
+
+            return False  #Task not found
+        
+    def display_tasks(self):
+        # Display all tasks in the list
+        if not self.head:
+            print("Task list is empty")
+            return
+
+        print("Task List: ")
+        curr = self.head
+        while curr:
+            print(" -",curr.data)
+            curr = curr.next
+
+    def search_task(self,keyword):
+        # Search for a task containing the keyword (case-insensitive)
+        curr=self.head
+        found=False
+        keyword=keyword.lower()
+        while curr:
+            if keyword in curr.data.lower():
+                print(f"Found: {curr.data}")
+                found = True
+            curr=curr.next
+        if not found:
+            print("No matching task found")
+
+
+#Create a task list
+todo = TaskList()
+# Add Task
+todo.add_task("Buy groceries")
+todo.add_task("Call Alice")
+todo.add_task("Do Homework")
+
+# Display all tasks
+todo.display_tasks()
+
+# Remove a task
+print("\nRemoving 'Call Alice':")
+todo.remove_task("Call Alice")
+
+# Display updated List
+todo.display_tasks()
+
+# Search for a task
+print("\nSearching for 'groceries':")
+todo.search_task("groceries")  # Output: Found: Buy groceries
+
+Output:
+
+Task List: 
+ - Buy groceries
+ - Call Alice
+ - Do Homework
+
+Removing 'Call Alice':
+Task List: 
+ - Buy groceries
+ - Do Homework
+
+Searching for 'groceries':
+Found: Buy groceries
+
