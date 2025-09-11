@@ -24,3 +24,4 @@ public class CreateSessionServlet extends HttpServlet {
         res.getWriter().println("<a href='readerSession'>Go to Read Session</a>");
     }
 }
+
