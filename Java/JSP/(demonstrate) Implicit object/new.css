@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+/* Body with Gradient */
+body{
+    background: linear-gradient(135deg,#43cea2,#185a9d);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* Container */
+.container{
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0.6px 25px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Heading */
+h2{
+    color: #185a9d;
+    margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p{
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Highlighted text */
+p span{
+    font-weight: bold;
+    color: #43cea2;
+}
