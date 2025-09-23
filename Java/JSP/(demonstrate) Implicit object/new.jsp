@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html;charset=UTF-8"%>
+<%@page language="java" contentType="text/html;charset=UTF-8" isELIgnored="false"%>
 <%@page isErrorPage="true"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +17,9 @@
     <%
     session.setAttribute("userRole","Admin");
     %>
-    <p> Session User Role: <span>${applicationScope.userRole} </span> </p>
+    <p> Session User Role: <span>${sessionScope.userRole} </span> </p>
 
-    <!--Accessing application context -->4
+    <!--Accessing application context -->
     <%
     application.setAttribute("appName","Student Management System");
     %>
